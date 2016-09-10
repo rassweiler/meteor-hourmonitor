@@ -1,0 +1,551 @@
+@import 'normalise.scss';
+@import 'base.scss';
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	color: $text;
+	font-family: Raleway,'Open Sans', sans-serif;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 3.998em;
+}
+
+h2 {
+	font-weight: 100;
+	font-size: 3.157em;
+}
+
+h3 {
+	font-size: 1.777em;
+	font-weight: 100;
+}
+
+p {
+	font-size: 1em;
+}
+
+a {
+	color: $accent;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	padding: 10px 10px 7px;
+}
+
+.btn, button {
+	background: $action;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;
+	font-weight: 800;
+	padding: 10px 51px 7px;
+	color: #FFF;
+	letter-spacing: 1px;
+	border: solid 2px $action;
+	@include trans();
+	&:hover {
+		background: $action - 30;
+		border-color: $action - 30;
+	}
+}
+
+.btn-text {
+	@extend .btn;
+	background: transparent;
+}
+
+.btn-primary {
+	@extend .btn;
+	background: $accent;
+	border: solid 2px $accent;
+	&:hover {
+		background: $accent - 30;
+		border-color: $accent - 30;
+	}
+}
+
+.header {
+	background: $navbg;
+	color: $text;
+	position: relative;
+	z-index: 10;
+	height: $headerheight;
+	padding: 5px 5%;
+	display: flex;
+	justify-content: space-between;
+	@include card(1);
+	a {
+		color: $navtext;
+		font-weight: bolder;
+	}
+	.site-title {
+		line-height: 0;
+		margin: 0;
+	}
+}
+
+.site-title{
+	a{
+		img{
+			max-height: $headerheight - 8;
+		}
+	}
+}
+
+.nav {
+	ul {
+		list-style: none;
+		display: flex;
+		padding: 0;
+		margin-top: $headerheight/6;
+	}
+	li{
+		&:hover{
+			background: $navhover;
+			border-radius: 2px;
+		}
+	}
+	li + li {
+		margin-left: 20px;
+	}
+	a {
+		text-decoration: none;
+		border-bottom: 2px solid transparent;
+		&:hover{
+			color:$navbg;
+		}
+	}
+	.menu-drop{
+		color: $navtext;
+		cursor: pointer;
+		margin-top: 5px;
+	}
+	select, .menu-drop {
+		display: none;
+	}
+	@media screen and (max-width: $small) {
+		font-size: 0.8em;
+		li + li {
+			margin-left: 15px;
+		}
+		ul{
+			display:none;
+		}
+		select{
+			display:inline-block;
+		}
+		.menu-drop{
+			display:inline-block;
+			float: right;
+		}
+		.show-menu{
+			display:block;
+			background: $navbg;
+			margin-top: $navheight - 10px;
+			width: 100%;
+			padding: 10px;
+			li{
+				width: 100%;
+				padding: 5px;
+			}
+			li + li {
+				margin:0;
+			}
+		}
+	}
+}
+
+.login, .logout {
+    cursor: pointer;
+}
+
+.billboard{
+	background: white;
+	border-bottom: 1px solid $dgrey;
+	color: $text;
+	position: relative;
+	font-size: 0.8em;
+	text-align: center;
+	padding: 10px;
+	z-index: 3;
+	h2{
+		margin: 0;
+	}
+}
+
+.add-cell{
+	margin-bottom: 20px;
+}
+ 
+.add-cell{
+	position: relative;
+	background: #FFF;
+	padding: 20px;
+	margin-bottom: 20px;
+	@include shadow-level(2);
+	.fa-close{
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 20px;
+	}
+	label{
+		display: block;
+		margin-bottom: 10px;
+	}
+	textarea, input{
+		width: 100%;
+	}
+}
+
+.btn, button{
+	display: inline-block;
+	cursor: pointer;
+	background: $dblue;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 5px 15px;
+	border: solid 3px $dblue;
+	border-radius: 2px;
+	font-weight: 800;
+	@include shadow-level(1);
+	@include trans();
+	&:hover{
+		background: $blue;
+		border-color: $blue;
+		@include shadow-level(2);
+	}
+	&.btn-primary{
+		background: $grey;
+		border-color: $dgrey;
+		color: $black;
+		&:hover{
+			background: $dgrey;
+			border-color: $dgrey;
+		}
+	}
+	&.btn-deny{
+		background: $red;
+		border: solid 3px $red;
+		&:hover{
+			background: $dred;
+			border-color: $dred;
+		}
+	}
+	&.btn-text{
+		color: $black;
+		background: transparent;
+		border: solid 2px $dgrey;
+		@include shadow-level(0);
+		&:hover{
+			background: $dblue;
+			border-color: $dblue;
+			@include shadow-level(1);
+		}
+	}
+	&.btn-text-dark{
+		color: #FFF;
+		background: transparent;
+		border: solid 2px #FFF;
+		@include shadow-level(0);
+		&:hover{
+			background: #FFF;
+			color: $dblue;
+			border-color: $dblue;
+			@include shadow-level(1);
+		}
+	}
+	&.btn-confirmation{
+		color: $black;
+		background: $green;
+		border: solid 2px $navbg;
+		&:hover{
+			background: $navbg;
+			border-color: $dblue;
+		}
+	}
+	&.btn-cancel{
+		color: #FFF;
+		background: transparent;
+		border: solid 2px #FFF;
+		opacity: 0.4;
+		@include shadow-level(-1);
+		&:hover{
+			background: red;
+			color: #FFF;
+			opacity: 1;
+			@include shadow-level(2);
+			border-color: $grey
+		}
+	}
+}
+ 
+input, select, textarea{
+	color: $navbg;
+	background: #FFF;
+	border: solid 2px light-grey;
+	border-radius: 2px;
+	font-weight: 800;
+	width: 100%;
+	padding: 6px 10px;
+	margin-bottom: 10px;
+	&.static-input{
+		border: none;
+		background: transparent;
+	}
+ }
+
+.list-group{
+	list-style: none;
+	padding: 0;
+}
+   
+.panel-body{
+	.form-group{
+		lost-column: 1/2;
+	}
+}
+
+.fa-close{
+	cursor: pointer;
+	&:hover{
+		color: $dgrey;
+	}
+}
+
+.plant-info{
+	width:auto;
+	height:300px;
+	border-radius: 5px;
+	padding: 7px;
+	margin-top: 10px;
+	@include card(2);
+	display: inline-flex;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	@media screen and (max-width: $small) {
+		height:200px;
+	}
+	.plant-layout{
+		height:100%;
+		img{
+			height: 100%;
+			width:auto;
+			object-fit: contain;
+		}
+	}
+	.status-up{
+		background: $statusup;
+	}
+	.status-down{
+		background: $statusdown;
+	}
+	.utilities {
+		display: inline-block;
+		height:90%;
+		.utility {
+			width: 12vw;
+			height: 60px;
+			display:block;
+			border-radius: 5px;
+			font-weight: bolder;
+			font-size: 1.2em;
+			@include card(1);
+			text-align: center;
+			margin-left: 20px;
+			margin-top: 22px;
+			vertical-align: middle;
+			@media screen and (max-width: $small) {
+				width: 15vw;
+				height: 30px;
+				font-size: 1em;
+				margin-top: 5px;
+			}
+			span{
+				text-align: center;
+				position: relative;
+				top: 40%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+}
+
+.cell-card{
+	@include card(1);
+	width:100px;
+	a{
+		text-decoration: none;
+		text-align: center;
+		color: $black;
+	}
+}
+
+.cells{
+	width:100%;
+	text-align: center;
+	.plant-cells{
+		width: 100%;
+	}
+	.cell{
+		width: 60px;
+		height: 60px;
+		margin: 6px;
+		border-radius: 5px;
+		font-weight: bolder;
+		font-size: 0.8em;
+		background: $cellbg;
+		display: inline-block;
+		@include card(1);
+		&:hover{
+			background: $grey;
+		}
+		span {
+			line-height:60px;
+			font-weight: bolder;
+		}
+	}
+	.cell2{
+		width: 80px;
+		height: 80px;
+		margin: 10px;
+		border-radius: 5px;
+		font-weight: bolder;
+		background: $lgrey;
+		display: inline-block;
+		@include card(2);
+		&:hover{
+			background: $dgrey;
+		}
+		span {
+			line-height:80px;
+			font-weight: bolder;
+		}
+	}
+	.status-down{
+		background: $statusdown;
+	}
+	.status-downanswered{
+		background: $statusanswered;
+	}
+	.plant-cells{
+		.cell-link{
+			text-decoration: none;
+			text-align: center;
+			color: $black;
+			&:hover{
+				background: $grey;
+			}
+		}
+	}
+}
+
+.cell-title{
+	background: $cellup;
+}
+
+.cell-down{
+	background: $celldown;
+}
+
+.cell-down-answered{
+	background: $cellanswered;
+}
+
+.cell-legend{
+	text-align:center;
+	background-color: $navbg + 100;
+	@include card(1);
+	ul {
+		list-style: none;
+		display:flex;
+	}
+	li + li{
+		margin-left: 10px;
+	}
+	li{
+		border-radius: 5px;
+		padding: 3px;
+		display:flex;
+	}
+	.running{
+		background: $cellbg;
+	}
+	.down{
+		background: $statusdown;
+	}
+	.answered{
+		background: $statusanswered;
+	}
+	.cell-legend-list{
+		width: 360px;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.cell-data{
+	width:100%;
+	text-align:center;
+	div{
+		padding-left: 15px;
+		padding-right: 15px;
+		border-radius: 10px;
+		margin: 15px;
+		display: inline-block;
+		@include card(2);
+		@media screen and (max-width: $small) {
+			padding-left: 5px;
+			padding-right: 5px;
+			border-radius: 10px;
+			margin: 5px;
+		}
+	}
+	.title{
+		font-weight: bolder;
+	}
+}
+
+.charts{
+	width: 100%;
+	@include card(1);
+	#chart1, #chart2{
+		width: 100%;
+		svg{
+			width:100%;
+		}
+	}
+}
+
+.license{
+	margin: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	h3, h4{
+		text-align:center;
+	}
+	a{
+		text-decoration: none;
+		font-weight: bolder;
+		color: $navbg;
+	}
+	@media screen and (max-width: $small) {
+		margin: 10px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
