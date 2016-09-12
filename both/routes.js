@@ -15,20 +15,26 @@ FlowRouter.route('/about', {
 });
 
 var JobRoutes = FlowRouter.group({
-	prefix: '/job',
+	prefix: '/jobs',
 	name:'job'
 });
 
 JobRoutes.route('/', {
 	name: 'jobs',
 	action() {
-		BlazeLayout.render("MainLayout", {main: "JobList"});
+		if(!Meteor.userId()){
+			FlowRouter.go('home');
+		}
+		BlazeLayout.render("MainLayout", {main: "Jobs"});
 	}
 });
 
 JobRoutes.route('/:_id', {
 	name: 'job',
 	action() {
+		if(!Meteor.userId()){
+			FlowRouter.go('home');
+		}
 		BlazeLayout.render("MainLayout", {main: "Job"});
 	}
 });

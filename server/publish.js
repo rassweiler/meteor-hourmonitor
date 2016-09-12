@@ -25,17 +25,25 @@ Payment.deny({
 
 Meteor.publish('job', function(id){
 	check(id,String);
-	return Job.find({_id:id});
+	return Job.find({owner: this.userId,_id:id});
 });
 
 Meteor.publish('jobs', function(){
-	return Job.find({});
+	if(Roles.userIsInRole(this.userId, 'admin2')){
+		return Job.find();
+	}else{
+		return Job.find({owner: this.userId});
+	}
 });
 
 Meteor.publish('pay', function(id){
-	return Pay.find({_id:id});
+	return Pay.find({owner:Meteor.userId,_id:id});
 });
 
 Meteor.publish('pays', function(){
-	return Pay.find({});
+	if(Roles.userIsInRole(Meteor.userId, 'admin')){
+		return Pay.find();
+	}else{
+		return Pay.find({owner:Meteor.userId});
+	}
 });

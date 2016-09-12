@@ -4,7 +4,17 @@ PaymentSchema = new SimpleSchema({
 	name:{
 		type: String,
 		label: "Payment Name"
-	}
+	},
+	owner:{
+		type:String,
+		label:"Owner",
+		autoValue: function(){
+			return this.userId
+		},
+		autoform:{
+			type:"hidden"
+		}
+	},
 });
 
 Payment.attachSchema(PaymentSchema);
@@ -16,8 +26,31 @@ JobSchema = new SimpleSchema({
 		type: String,
 		label: "Job Name"
 	},
+	company:{
+		type: String,
+		label: "Company Name"
+	},
+	rate:{
+		type: Number,
+		label: "Hourly Rate",
+		decimal:true
+	},
 	payments:{
-		type: [Payment]
+		type: [Payment],
+		optional: true,
+		autoform:{
+			type:"hidden"
+		}
+	},
+	owner:{
+		type:String,
+		label:"Owner",
+		autoValue: function(){
+			return this.userId
+		},
+		autoform:{
+			type:"hidden"
+		}
 	},
 	createdAt: {
 		type: Date,
@@ -29,6 +62,9 @@ JobSchema = new SimpleSchema({
 			} else {
 				this.unset();  // Prevent user from supplying their own value
 			}
+		},
+		autoform:{
+			type:"hidden"
 		}
 	},
 	updatedAt: {
@@ -39,7 +75,10 @@ JobSchema = new SimpleSchema({
 			}
 		},
 		denyInsert: true,
-		optional: true
+		optional: true,
+		autoform:{
+			type:"hidden"
+		}
 	}
 });
 

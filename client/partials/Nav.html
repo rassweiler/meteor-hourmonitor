@@ -4,12 +4,16 @@
     		<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
     	</div>
         <ul class="{{#if $.Session.get 'showMenu'}}show-menu{{/if}}">
-            <li><a href="/">Jobs</a></li>
+            {{#if currentUser}}
+            <li><a href="/jobs/">Jobs</a></li>
             <li><a href="/">Forms</a></li>
+            {{/if}}
             <li><a href="/about">About</a></li>
-            <li><a href="/">Login</a></li>
-            <li><a href="/">Logout</a></li>
-            <li><a href="/">Register</a></li>
+            {{#if currentUser}}
+            <li class="logout">Logout</li>
+            {{else}}
+            <li class="login">Login/Signup</li>
+            {{/if}}
         </ul>
     </nav>
 </template>

@@ -165,9 +165,73 @@ input[type="password"] {
 		}
 	}
 }
+.job-list{
+	margin: 10px;
+	display:inline-flex;
+	.job{
+		margin:10px;
+		padding:5px;
+		text-align: center;
+		font-weight: bolder;
+		border-radius: 3px;
+		@include card(2);
+		&:hover{
+			background: $navhover;
+		}
+		a{
+			text-decoration: none;
+			color: $text;
+		}
+	}
+}
+.new-job-container{
+	z-index: 9;
+	display:none;
+	margin:20px;
+	padding: 10px;
+	@include card(2);
+	&.open{
+		display:inline-block;
+	}
+}
+
+.fa-plus-square{
+	display:block;
+	float:right;
+	margin:20px;
+	&:hover{
+		color: $green;
+	}
+	&.open{
+		display:none;
+	}
+}
 
 .login, .logout {
     cursor: pointer;
+    font-family: Raleway,'Open Sans', sans-serif;
+    color: $navtext;
+    text-decoration: none;
+    font-weight: bolder;
+    &:hover{
+		color:$navbg;
+	}
+}
+
+.login-modal{
+	display:none;
+	width:500px;
+	padding:10px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	@media screen and (max-width: $small) {
+		width:100%;
+	}
+	&.open{
+		display:block;
+		@include card(2);
+	}
 }
 
 .billboard{
@@ -181,31 +245,6 @@ input[type="password"] {
 	z-index: 3;
 	h2{
 		margin: 0;
-	}
-}
-
-.add-cell{
-	margin-bottom: 20px;
-}
- 
-.add-cell{
-	position: relative;
-	background: #FFF;
-	padding: 20px;
-	margin-bottom: 20px;
-	@include shadow-level(2);
-	.fa-close{
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 20px;
-	}
-	label{
-		display: block;
-		margin-bottom: 10px;
-	}
-	textarea, input{
-		width: 100%;
 	}
 }
 
@@ -320,203 +359,9 @@ input, select, textarea{
 
 .fa-close{
 	cursor: pointer;
+	float: right;
 	&:hover{
-		color: $dgrey;
-	}
-}
-
-.plant-info{
-	width:auto;
-	height:300px;
-	border-radius: 5px;
-	padding: 7px;
-	margin-top: 10px;
-	@include card(2);
-	display: inline-flex;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	@media screen and (max-width: $small) {
-		height:200px;
-	}
-	.plant-layout{
-		height:100%;
-		img{
-			height: 100%;
-			width:auto;
-			object-fit: contain;
-		}
-	}
-	.status-up{
-		background: $statusup;
-	}
-	.status-down{
-		background: $statusdown;
-	}
-	.utilities {
-		display: inline-block;
-		height:90%;
-		.utility {
-			width: 12vw;
-			height: 60px;
-			display:block;
-			border-radius: 5px;
-			font-weight: bolder;
-			font-size: 1.2em;
-			@include card(1);
-			text-align: center;
-			margin-left: 20px;
-			margin-top: 22px;
-			vertical-align: middle;
-			@media screen and (max-width: $small) {
-				width: 15vw;
-				height: 30px;
-				font-size: 1em;
-				margin-top: 5px;
-			}
-			span{
-				text-align: center;
-				position: relative;
-				top: 40%;
-				transform: translateY(-50%);
-			}
-		}
-	}
-}
-
-.cell-card{
-	@include card(1);
-	width:100px;
-	a{
-		text-decoration: none;
-		text-align: center;
-		color: $black;
-	}
-}
-
-.cells{
-	width:100%;
-	text-align: center;
-	.plant-cells{
-		width: 100%;
-	}
-	.cell{
-		width: 60px;
-		height: 60px;
-		margin: 6px;
-		border-radius: 5px;
-		font-weight: bolder;
-		font-size: 0.8em;
-		background: $cellbg;
-		display: inline-block;
-		@include card(1);
-		&:hover{
-			background: $grey;
-		}
-		span {
-			line-height:60px;
-			font-weight: bolder;
-		}
-	}
-	.cell2{
-		width: 80px;
-		height: 80px;
-		margin: 10px;
-		border-radius: 5px;
-		font-weight: bolder;
-		background: $lgrey;
-		display: inline-block;
-		@include card(2);
-		&:hover{
-			background: $dgrey;
-		}
-		span {
-			line-height:80px;
-			font-weight: bolder;
-		}
-	}
-	.status-down{
-		background: $statusdown;
-	}
-	.status-downanswered{
-		background: $statusanswered;
-	}
-	.plant-cells{
-		.cell-link{
-			text-decoration: none;
-			text-align: center;
-			color: $black;
-			&:hover{
-				background: $grey;
-			}
-		}
-	}
-}
-
-.cell-title{
-	background: $cellup;
-}
-
-.cell-down{
-	background: $celldown;
-}
-
-.cell-down-answered{
-	background: $cellanswered;
-}
-
-.cell-legend{
-	text-align:center;
-	background-color: $navbg + 100;
-	@include card(1);
-	ul {
-		list-style: none;
-		display:flex;
-	}
-	li + li{
-		margin-left: 10px;
-	}
-	li{
-		border-radius: 5px;
-		padding: 3px;
-		display:flex;
-	}
-	.running{
-		background: $cellbg;
-	}
-	.down{
-		background: $statusdown;
-	}
-	.answered{
-		background: $statusanswered;
-	}
-	.cell-legend-list{
-		width: 360px;
-		position: relative;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-}
-
-.cell-data{
-	width:100%;
-	text-align:center;
-	div{
-		padding-left: 15px;
-		padding-right: 15px;
-		border-radius: 10px;
-		margin: 15px;
-		display: inline-block;
-		@include card(2);
-		@media screen and (max-width: $small) {
-			padding-left: 5px;
-			padding-right: 5px;
-			border-radius: 10px;
-			margin: 5px;
-		}
-	}
-	.title{
-		font-weight: bolder;
+		color: $red;
 	}
 }
 

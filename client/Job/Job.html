@@ -1,7 +1,13 @@
 <template name="Job">
 	{{#if Template.subscriptionsReady}}
 	{{#if job}}
-		
+	<article class="job {{#if isCurrentJob}}current-job{{/if}}">
+		<h3>
+			{{name}}
+		</h3>
+		<i class="fa fa-pencil"></i>
+		<i class="fa fa-trash"></i>
+	</article>
 	{{/if}}
 	{{else}}
 	<div class="billboard">

@@ -1,0 +1,30 @@
+<template name="Jobs">
+	{{#if Template.subscriptionsReady}}
+	<i class="fa fa-plus-square fa-2x {{$.Session.get 'new-job-toggle'}}"></i>
+	{{> NewJob}}
+	{{#if jobs.count}}
+	<div class="job-list">
+	{{#each jobs}}
+		<article class="job">
+			<a href="/jobs/{{_id}}">
+				<h3>
+					{{name}}
+				</h3>
+				<p>
+					{{company}}
+				</p>
+			</a>
+		</article>
+	{{/each}}
+	</div>
+	{{else}}
+	<h3>
+		No Jobs... Create a new job
+	</h3>
+	{{/if}}
+	{{else}}
+	<div class="billboard">
+		<h2>Loading...</h2>
+	</div>
+	{{/if}}
+</template>
