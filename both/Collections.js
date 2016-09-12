@@ -24,15 +24,18 @@ Job = new Mongo.Collection('job');
 JobSchema = new SimpleSchema({
 	name:{
 		type: String,
-		label: "Job Name"
+		label: "Job Name",
+		max: 20
 	},
 	company:{
 		type: String,
-		label: "Company Name"
+		label: "Company Name",
+		max: 20
 	},
 	rate:{
 		type: Number,
 		label: "Hourly Rate",
+		min: 0,
 		decimal:true
 	},
 	payments:{

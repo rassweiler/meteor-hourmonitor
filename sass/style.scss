@@ -135,7 +135,7 @@ input[type="password"] {
 		display: none;
 	}
 	@media screen and (max-width: $small) {
-		font-size: 0.8em;
+		font-size: 1em;
 		li + li {
 			margin-left: 15px;
 		}
@@ -166,9 +166,12 @@ input[type="password"] {
 	}
 }
 .job-list{
-	margin: 10px;
-	display:inline-flex;
+	width:100%;
+	display:inline-block;
 	.job{
+		display:inline-block;
+		width: 300px;
+		height: 150px;
 		margin:10px;
 		padding:5px;
 		text-align: center;
@@ -189,9 +192,37 @@ input[type="password"] {
 	display:none;
 	margin:20px;
 	padding: 10px;
+	width: 95%;
 	@include card(2);
 	&.open{
 		display:inline-block;
+		.fa-close{
+			float:right;
+		}
+		.new-job-form{
+			display:inline-block;
+			width:100%;
+			.form-group{
+				display:inline-block;
+				width:220px;
+				.form-control{
+					padding: 6px 10px;
+				}
+				.help-block{
+					font-style:italic;
+					font-weight:bold;
+					font-size: 0.7em;
+					color:#b55;
+				}
+			}
+			.new-job-btn{
+				float:right;
+				margin: 10px;
+			}
+		}
+	}
+	@media screen and (max-width: $small) {
+		margin:5px;
 	}
 }
 

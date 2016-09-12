@@ -1,6 +1,14 @@
 <template name="NewJob">
 	<div class="new-job-container {{$.Session.get 'new-job-toggle'}}">
 		<i class="fa fa-close fa-2x close-new-job"></i>
-		{{> quickForm collection="Job" id="insertJobForm" type="method" class="new-job-form" meteormethod="jobs.insert" }}
+		{{#autoForm collection="Job" id="insertJobForm" type="method" class="new-job-form" meteormethod="jobs.insert" }}
+		<fieldset>
+			<legend>Add a Job</legend>
+			{{> afQuickField name='name'}}
+			{{> afQuickField name='company'}}
+			{{> afQuickField name='rate'}}
+		</fieldset>
+		<button type="submit" class="btn btn-primary new-job-btn">Create</button>
+		{{/autoForm}}
 	</div>
 </template>

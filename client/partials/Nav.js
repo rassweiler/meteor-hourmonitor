@@ -2,6 +2,9 @@ Template.Nav.events({
 	'click .fa-bars':function(){
 		Session.set('showMenu', !Session.get('showMenu'));
 	},
+	'click li':function(){
+		Session.set('showMenu', !Session.get('showMenu'));
+	},
 	'click .login':()=>{
 		if(Session.get('nav-toggle') == 'open'){
 			Session.set('nav-toggle', '');

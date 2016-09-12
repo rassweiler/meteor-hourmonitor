@@ -1,7 +1,7 @@
 <template name="Jobs">
 	{{#if Template.subscriptionsReady}}
-	<i class="fa fa-plus-square fa-2x {{$.Session.get 'new-job-toggle'}}"></i>
 	{{> NewJob}}
+	<i class="fa fa-plus-square fa-2x {{$.Session.get 'new-job-toggle'}}"></i>
 	{{#if jobs.count}}
 	<div class="job-list">
 	{{#each jobs}}
