@@ -2,12 +2,17 @@
 	{{#if Template.subscriptionsReady}}
 	{{#if job}}
 	<article class="job {{#if isCurrentJob}}current-job{{/if}}">
-		<h3>
-			{{name}}
-		</h3>
+		<div class="billboard">
+			<h2>{{job.name}}</h2>
+		</div>
+		div class="menu"
 		<i class="fa fa-pencil"></i>
 		<i class="fa fa-trash"></i>
 	</article>
+	{{else}}
+		<div class="billboard statusdown">
+			<h2>Job not found...</h2>
+		</div>
 	{{/if}}
 	{{else}}
 	<div class="billboard">

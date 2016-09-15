@@ -134,6 +134,13 @@ input[type="password"] {
 	select, .menu-drop {
 		display: none;
 	}
+	#login-buttons{
+			margin-left: 20px;
+		}
+	#login-dropdown-list{
+		left:-100px;
+		top: 50px;
+	}
 	@media screen and (max-width: $small) {
 		font-size: 1em;
 		li + li {
@@ -148,6 +155,11 @@ input[type="password"] {
 		.menu-drop{
 			display:inline-block;
 			float: right;
+		}
+		#login-dropdown-list{
+			width: 200px;
+			left: -97px;
+			top: 35px;
 		}
 		.show-menu{
 			display:block;
